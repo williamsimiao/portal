@@ -7,3 +7,5 @@ $validation:
 
 signin: Entrar
 sign_up: Inscrever-se
+username: nome de usuário
+password: senha

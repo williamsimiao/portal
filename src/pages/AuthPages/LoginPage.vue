@@ -8,21 +8,20 @@
             dark
             flat
           >
-            <v-toolbar-title>Login form</v-toolbar-title>
+            <v-toolbar-title>Login</v-toolbar-title>
             <v-spacer />
           </v-toolbar>
           <v-card-text>
             <v-form>
               <v-text-field
-                label="Login"
+                :label="$tc('username')"
                 name="login"
                 prepend-icon="person"
                 type="text"
               />
 
               <v-text-field
-                id="password"
-                label="Password"
+                :label="$tc('password')"
                 name="password"
                 prepend-icon="lock"
                 type="password"
@@ -40,5 +39,30 @@
 </template>
 
 <script>
-export default {}
+import { required } from 'vuelidate/lib/validators'
+export default {
+  data: () => ({
+
+  }),
+  computed: {
+
+  },
+  validations () {
+    const validations = {}
+    
+    const validEmail = value => {
+      if (!value) return true
+      let expression = /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/g
+      return expression.test(value)
+    }
+    validations.email = {
+      required,
+      validEmail
+    },
+    validations.password = {
+      required
+    }
+    return validations
+  },
+}
 </script>
