@@ -1,0 +1,9 @@
+i18n:
+  en-US: English
+  pt-BR: Português
+
+$validation:
+  required: Dado obrigatório
+
+signin: Entrar
+sign_up: Inscrever-se

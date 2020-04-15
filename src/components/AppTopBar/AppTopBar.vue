@@ -5,20 +5,17 @@
     app
     :flat="$vuetify.breakpoint.xsOnly"
   >
-    <v-app-bar-nav-icon v-if="isLogged" @click.stop="toogleMainDrawer()"/>
-    <router-link :to="{name: 'welcome'}" class="d-flex router-link-active">
-      <img src="@/assets/images/logo-dinamo-simbolo-dark.png" height="38px" width="38px">
+    <!-- <v-app-bar-nav-icon v-if="isLogged" @click.stop="toogleMainDrawer()"/> -->
+    <router-link :to="{name: 'login'}" class="d-flex router-link-active">
+      <img src="@/assets/logo.png" height="38px" width="38px">
     </router-link>
     <span class="title ml-3 mr-5">
-      Dinamo
+      App
       <span class="font-weight-light">
-        Services
+        Unimed
       </span>
     </span>
     <v-spacer />
-    <v-btn icon active-class="dinamo" @click="toogleDarkTheme()">
-      <v-icon>settings_brightness</v-icon>
-    </v-btn>
     <template v-if="!isLogged">
       <v-btn
         text
@@ -63,7 +60,8 @@ export default {
   },
   computed: {
     isLogged () {
-      return this.$store.state.auth.isLogged
+      return false
+      // return this.$store.state.auth.isLogged
     }
   }
 }
