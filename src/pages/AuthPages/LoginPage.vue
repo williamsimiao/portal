@@ -12,7 +12,7 @@
             <v-spacer />
           </v-toolbar>
           <v-card-text>
-            <v-form>
+            <v-form @submit.prevent="submit">
               <v-text-field
                 :v-model="username"
                 :label="$tc('username')"
@@ -26,17 +26,18 @@
                 :v-model="password"
                 :label="$tc('password')"
                 prepend-icon="lock"
-                type="password"
+                :append-icon="showPwd ? 'visibility' : 'visibility_off'"
+                :type="showPwd ? 'text' : 'password'"
+                @click:append="showPwd = !showPwd"
                 :error-messages="passwordErrors"
                 @input="$v.password.$touch()"
                 @blur="$v.password.$touch()"
               />
+              <v-row justify="end" class="mr-1">
+                <v-btn type="submit" color="primary">{{ $tc('login') }}</v-btn>
+              </v-row>
             </v-form>
           </v-card-text>
-          <v-card-actions>
-            <v-spacer />
-            <v-btn color="primary">{{ $tc('login') }}</v-btn>
-          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -47,7 +48,7 @@
 import { required } from 'vuelidate/lib/validators'
 export default {
   data: () => ({
-
+    showPwd: false
   }),
   computed: {
     username: {
@@ -96,5 +97,10 @@ export default {
     }
     return validations
   },
+  methods: {
+    submit () {
+      this.$router.push({ name: 'home' })
+    }
+  }
 }
 </script>

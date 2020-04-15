@@ -26,7 +26,9 @@
                 :v-model="password"
                 :label="$tc('password')"
                 prepend-icon="lock"
-                type="password"
+                :append-icon="showPwd ? 'visibility' : 'visibility_off'"
+                :type="showPwd ? 'text' : 'password'"
+                @click:append="showPwd = !showPwd"
                 :error-messages="passwordErrors"
                 @input="$v.password.$touch()"
                 @blur="$v.password.$touch()"
@@ -48,7 +50,8 @@ import { required } from 'vuelidate/lib/validators'
 export default {
   data: () => ({
     username: null,
-    password: null
+    password: null,
+    showPwd: false
   }),
   computed: {
     // ERRORS
@@ -82,7 +85,7 @@ export default {
     return validations
   },
   methods: {
-    
+
   }
 }
 </script>
