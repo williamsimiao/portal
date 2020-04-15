@@ -20,13 +20,13 @@
       <v-btn
         text
         @click="$router.push({ name: 'login'})"
-      >{{ $tc('signin') }}</v-btn>
+      >{{ $tc('login') }}</v-btn>
       <v-btn
         v-if="$vuetify.breakpoint.smAndUp"
         class="mr-2"
         outlined
         @click="$router.push({ name: 'join'})"
-      >{{ $tc('sign_up') }}</v-btn>
+      >{{ $tc('crate_account') }}</v-btn>
     </template>
     <template v-else>
       <v-btn

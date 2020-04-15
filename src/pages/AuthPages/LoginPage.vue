@@ -8,7 +8,7 @@
             dark
             flat
           >
-            <v-toolbar-title>{{ $tc('signin') }}</v-toolbar-title>
+            <v-toolbar-title>{{ $tc('login') }}</v-toolbar-title>
             <v-spacer />
           </v-toolbar>
           <v-card-text>
@@ -35,7 +35,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer />
-            <v-btn color="primary">Login</v-btn>
+            <v-btn color="primary">{{ $tc('login') }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>

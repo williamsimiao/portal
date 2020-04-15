@@ -5,8 +5,8 @@ i18n:
 $validation:
   required: Dado obrigatório
 
-signin: Entrar
-sign_up: Inscrever-se
+login: Entrar
+crate_account: Criar conta
 username: nome de usuário
 password: senha
-login: login
+create: Criar

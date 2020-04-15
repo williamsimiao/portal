@@ -5,8 +5,8 @@ i18n:
 $validation:
   required: Required data
 
-signin: Sign in
-sign_up: Sign up
+login: Sign in
+crate_account: Create account
 username: username
 password: password
-login: login
+create: Create
