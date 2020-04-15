@@ -24,16 +24,16 @@ export default {
     // AppDrawer,
     // AppLoadingModal
   },
-  // computed: {
-  //   locale () {
-  //     return this.$store.state.locale.locale
-  //   }
-  // },
-  // watch: {
-  //   locale (val) {
-  //     this.$i18n.locale = val
-  //   }
-  // }
+  computed: {
+    locale () {
+      return this.$store.state.locale.locale
+    }
+  },
+  watch: {
+    locale (val) {
+      this.$i18n.locale = val
+    }
+  }
 };
 </script>
 
