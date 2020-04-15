@@ -1,12 +1,19 @@
 import Vue from 'vue'
 import App from './App.vue'
-import vuetify from './plugins/vuetify';
+import plugins from './plugins';
+import router from './router';
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 
 Vue.config.productionTip = false
 
-new Vue({
-  vuetify,
+const appConf = {
+  router,
+  // store,
+  // layouts,
   render: h => h(App)
-}).$mount('#app')
+}
+
+Object.assign(appConf, plugins)
+
+new Vue(appConf).$mount('#app')

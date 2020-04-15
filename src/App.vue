@@ -1,60 +1,42 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
+    <!-- <app-top-bar/> -->
+    <!-- <app-drawer name="mainMenu" :app="true" :temporary="true" /> -->
     <v-content>
-      <HelloWorld/>
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
     </v-content>
+    <app-footer />
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import AppFooter from '@/components/AppFooter/AppFooter'
+// import AppTopBar from '@/components/AppTopBar/AppTopBar'
+// import AppDrawer from '@/components/drawers/AppDrawer'
+// import AppLoadingModal from '@/components/ui/AppLoadingModal'
 
 export default {
-  name: 'App',
-
   components: {
-    HelloWorld,
+    AppFooter,
+    // AppTopBar,
+    // AppDrawer,
+    // AppLoadingModal
   },
-
-  data: () => ({
-    //
-  }),
+  // computed: {
+  //   locale () {
+  //     return this.$store.state.locale.locale
+  //   }
+  // },
+  // watch: {
+  //   locale (val) {
+  //     this.$i18n.locale = val
+  //   }
+  // }
 };
 </script>
+
+<style lang="scss">
+@import 'assets/styles/main';
+</style>

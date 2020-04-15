@@ -1,0 +1,20 @@
+.f-12px {
+  font-size: 12px !important;
+}
+
+.no-scrollbar {  
+  position: fixed; overflow-y:scroll;
+}
+
+.card--flex-toolbar {
+  margin-top: -68px !important;
+}
+
+.no-text-transform {
+  text-transform: none !important;
+}
+@media (max-width: 600px) {
+  .card--flex-toolbar {
+    margin-top: 0px !important;
+  }
+}
