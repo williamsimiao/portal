@@ -14,7 +14,7 @@
           <v-card-text>
             <v-form>
               <v-text-field
-                :v-model="username"
+                v-model="username"
                 :label="$tc('username')"
                 prepend-icon="person"
                 :error-messages="usernameErrors"
@@ -23,7 +23,7 @@
               />
 
               <v-text-field
-                :v-model="password"
+                v-model="password"
                 :label="$tc('password')"
                 prepend-icon="lock"
                 :append-icon="showPwd ? 'visibility' : 'visibility_off'"
