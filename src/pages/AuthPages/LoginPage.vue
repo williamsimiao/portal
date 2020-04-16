@@ -101,6 +101,7 @@ export default {
   },
   methods: {
     submit () {
+      this.$store.commit('auth/SET_IS_LOGGED', true)
       this.$router.push({ name: 'home' })
     }
   }

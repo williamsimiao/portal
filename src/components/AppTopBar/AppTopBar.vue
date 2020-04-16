@@ -60,8 +60,7 @@ export default {
   },
   computed: {
     isLogged () {
-      return false
-      // return this.$store.state.auth.isLogged
+      return this.$store.state.auth.isLogged
     }
   }
 }

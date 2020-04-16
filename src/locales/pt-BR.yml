@@ -7,6 +7,7 @@ $validation:
 
 language: Idioma
 login: Entrar
+logout: Sair
 crate_account: Criar conta
 username: nome de usuário
 password: senha
