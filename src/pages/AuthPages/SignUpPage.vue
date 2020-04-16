@@ -12,7 +12,7 @@
             <v-spacer />
           </v-toolbar>
           <v-card-text>
-            <v-form>
+            <v-form @submit.prevent="submit">
               <v-text-field
                 v-model="username"
                 :label="$tc('username')"
@@ -33,12 +33,11 @@
                 @input="$v.password.$touch()"
                 @blur="$v.password.$touch()"
               />
+              <v-row justify="end" class="my-1 mx-1">
+                <v-btn type="submit" color="primary">{{ $tc('create') }}</v-btn>
+              </v-row>
             </v-form>
           </v-card-text>
-          <v-card-actions>
-            <v-spacer />
-            <v-btn color="primary">{{ $tc('create') }}</v-btn>
-          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
@@ -85,7 +84,9 @@ export default {
     return validations
   },
   methods: {
-
+    submit () {
+      console.log('TODO')
+    }
   }
 }
 </script>
