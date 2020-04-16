@@ -10,3 +10,6 @@ crate_account: Criar conta
 username: nome de usuário
 password: senha
 create: Criar
+validity_interval: Intevalo de validade
+from: De
+to: Até
