@@ -36,6 +36,14 @@ const router = new Router({
       component: () => import('./pages/AuthPages/SignUpPage')
     },
     {
+      path: '/forgot_password',
+      name: 'forgot_password',
+      meta: {
+        public: true
+      },
+      component: () => import('./pages/AuthPages/ForgotPasswordPage')
+    },
+    {
       path: '*',
       beforeEnter: (to, from, next) => {
         next({ name: 'not-found' })

@@ -5,6 +5,7 @@ i18n:
 $validation:
   required: Required data
 
+language: Language
 login: Sign in
 crate_account: Create account
 username: username
@@ -13,3 +14,5 @@ create: Create
 validity_interval: Validity interval
 from: From
 to: To
+forgot_pwd: Forgot password
+send: Send

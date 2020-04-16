@@ -33,7 +33,9 @@
                 @input="$v.password.$touch()"
                 @blur="$v.password.$touch()"
               />
-              <v-row justify="end" class="mr-1">
+              <v-row class="my-1 mx-1">
+                <a @click="$router.push({ name: 'forgot_password' })" class="blue--text">{{ `${$tc('forgot_pwd')} ?` }}</a>
+                <v-spacer/>
                 <v-btn type="submit" color="primary">{{ $tc('login') }}</v-btn>
               </v-row>
             </v-form>
