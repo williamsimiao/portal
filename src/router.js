@@ -44,6 +44,14 @@ const router = new Router({
       component: () => import('./pages/AuthPages/ForgotPasswordPage')
     },
     {
+      path: '/user_managment',
+      name: 'user_managment',
+      meta: {
+        public: true
+      },
+      component: () => import('./pages/UsersManagmentPage/UsersManagmentPage')
+    },
+    {
       path: '*',
       beforeEnter: (to, from, next) => {
         next({ name: 'not-found' })
