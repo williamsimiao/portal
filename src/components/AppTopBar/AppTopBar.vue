@@ -5,7 +5,8 @@
     app
     :flat="$vuetify.breakpoint.xsOnly"
   >
-    <!-- <v-app-bar-nav-icon v-if="isLogged" @click.stop="toogleMainDrawer()"/> -->
+    <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    <!-- <v-app-bar-nav-icon @click.stop="toogleMainDrawer()"/> -->
     <router-link :to="{name: 'login'}" class="d-flex router-link-active">
       <img src="@/assets/logo.png" height="38px" width="38px">
     </router-link>
@@ -47,7 +48,7 @@ export default {
   },
   methods: {
     toogleMainDrawer () {
-      this.$store.dispatch('drawers/toggle', { name: 'mainMenu' })
+      this.$store.dispatch('drawer/toggle')
     },
     logout () {
       this.$store.dispatch('auth/doLogout').then(() => {

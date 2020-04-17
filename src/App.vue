@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <app-top-bar/>
-    <!-- <app-drawer name="mainMenu" :app="true" :temporary="true" /> -->
+    <template>
+      <app-main-menu-drawer/>
+    </template>
     <v-content>
       <transition name="fade" mode="out-in">
         <router-view />
@@ -14,14 +16,14 @@
 <script>
 import AppFooter from '@/components/AppFooter/AppFooter'
 import AppTopBar from '@/components/AppTopBar/AppTopBar'
-// import AppDrawer from '@/components/drawers/AppDrawer'
+import AppMainMenuDrawer from '@/components/drawers/AppMainMenuDrawer'
 // import AppLoadingModal from '@/components/ui/AppLoadingModal'
 
 export default {
   components: {
     AppFooter,
     AppTopBar,
-    // AppDrawer,
+    AppMainMenuDrawer,
     // AppLoadingModal
   },
   computed: {
