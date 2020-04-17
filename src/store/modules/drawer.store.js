@@ -1,17 +1,17 @@
 const state = {
-  drawer: false
+  drawerActive: false
 }
 
 
 const mutations = {
   SET_DRAWER_ACTIVE(state, payload = null) {
-    state.drawer = payload
+    state.drawerActive = payload
   }
 }
 
 const actions = {
   toggle ({ state, commit }) {
-    commit('SET_DRAWER_ACTIVE', !state.drawer)
+    commit('SET_DRAWER_ACTIVE', !state.drawerActive)
   }
 }
 

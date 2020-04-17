@@ -16,7 +16,7 @@
 <script>
 import AppFooter from '@/components/AppFooter/AppFooter'
 import AppTopBar from '@/components/AppTopBar/AppTopBar'
-import AppMainMenuDrawer from '@/components/drawers/AppMainMenuDrawer'
+import AppMainMenuDrawer from '@/components/Drawer/AppMainMenuDrawer'
 // import AppLoadingModal from '@/components/ui/AppLoadingModal'
 
 export default {

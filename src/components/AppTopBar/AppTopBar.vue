@@ -5,8 +5,7 @@
     app
     :flat="$vuetify.breakpoint.xsOnly"
   >
-    <v-app-bar-nav-icon></v-app-bar-nav-icon>
-    <!-- <v-app-bar-nav-icon @click.stop="toogleMainDrawer()"/> -->
+    <v-app-bar-nav-icon @click.stop="toogleMainDrawer()"/>
     <router-link :to="{name: 'login'}" class="d-flex router-link-active">
       <img src="@/assets/logo.png" height="38px" width="38px">
     </router-link>
@@ -54,9 +53,6 @@ export default {
       this.$store.dispatch('auth/doLogout').then(() => {
         this.$router.push({ name: 'login'})
       })
-    },
-    toogleDarkTheme () {
-      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
     }
   },
   computed: {

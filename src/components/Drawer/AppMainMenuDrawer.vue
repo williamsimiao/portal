@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer
-    v-model="active"
+    v-model="drawerActive"
     absolute
     temporary
   >
@@ -30,8 +30,16 @@
 <script>
   export default {
     computed: {
-      active () {
-        return this.$store.state.drawer.drawer
+      drawerActive: {
+        get () {
+          return this.$store.state.drawer.drawerActive
+        },
+        set (val) {
+          console.log('aqui')
+          if(!val) {
+            this.$store.commit('drawer/SET_DRAWER_ACTIVE', false)
+          }
+        }
       },
       isManager () {
         return this.$store.state.auth.isManager
