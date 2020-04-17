@@ -27,4 +27,4 @@ state_label: State (S)
 country: Country (C)
 distiguish_name: Distinguish Name (/CN=common name/O=organization name/OU=organization unit name/L=city name/S=state name/C=two letter ISO code/E=e-mail)
 email: Email (E)
-or: Or
+or: OR

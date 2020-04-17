@@ -216,6 +216,15 @@ export default {
       this.$emit('close')
     },
     resetFields () {
+      this.isUsingDN = true
+      this.distiguishName = null
+      this.commomName = null
+      this.organization = null
+      this.organizationUnit = null
+      this.locality = null
+      this.stateValue = null
+      this.country = null
+      this.email = null
     },
     mountDNfromFields () {
       var dn = ''
