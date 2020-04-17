@@ -52,7 +52,6 @@
           return this.$store.state.drawer.drawerActive
         },
         set (val) {
-          console.log('aqui')
           if(!val) {
             this.$store.commit('drawer/SET_DRAWER_ACTIVE', false)
           }

@@ -1,34 +1,29 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col>
-        <h2 class="heading">{{ $tc('member', 2) }}</h2>
-      </v-col>
+    <v-row justify="space-between" no-gutters>
+      <h2 class="heading">{{ $tc('users_managment') }}</h2>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn v-on="on" icon @click="showInviteMemberModal = true">
+            <v-icon>
+              add
+            </v-icon>
+          </v-btn>
+        </template>
+        <span>{{ $tc('add_member') }} </span>
+      </v-tooltip>
     </v-row>
     <v-divider/>
     <v-row no-gutters align="end">
-      <v-col cols="10">
-        <v-text-field
-          v-model="search"
-          append-icon="search"
-          label="Search"
-          single-line
-          hide-details
-        ></v-text-field>
-      </v-col>
-      <v-spacer/>
-      <v-col>
-        <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
-            <v-btn v-on="on" icon @click="showInviteMemberModal = true">
-              <v-icon>
-                add
-              </v-icon>
-            </v-btn>
-          </template>
-          <span>{{ $tc('add_member') }} </span>
-        </v-tooltip>
-      </v-col>
+      <v-text-field
+        class="mb-4"
+        v-model="search"
+        append-icon="search"
+        label="Search"
+        single-line
+        hide-details
+      >
+      </v-text-field>
     </v-row>
     <v-data-table
       :headers="headers"
@@ -39,29 +34,18 @@
       :search="search"
     >
       <template v-slot:item.action="{ item }">
-        <v-menu offset-y>
-          <template v-slot:activator="{ on: menu }">
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on: tooltip }">
-                <v-btn
-                  v-on="{ ...tooltip, ...menu }"
-                  icon
-                >
-                  <v-icon>settings</v-icon>
-                </v-btn>
-              </template>
-              <span>{{ `${$tc('options')}` }}</span>
-            </v-tooltip>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on }">
+            <v-btn
+              v-on="on"
+              icon
+              @click="removeUser(item)"
+            >
+              <v-icon>delete</v-icon>
+            </v-btn>
           </template>
-          <v-list>
-            <v-list-item @click="removeMember(item.name)">
-              <v-list-item-title>{{ $t(`remove_from_organization`) }}</v-list-item-title>
-            </v-list-item>
-            <v-list-item @click="editMemberRole(item.name)">
-              <v-list-item-title>{{ $t(`change_role`) }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
+          <span>{{ `${$tc('remove_user')}` }}</span>
+        </v-tooltip>
       </template>
       <template v-slot:no-data>
         <td
@@ -81,7 +65,7 @@
         </td>
       </template>
     </v-data-table>
-    <member-invite-modal/>
+    <!-- <member-invite-modal/> -->
     <!-- <member-remove-modal
       organizationName="Limoeiro"
       :name="selectedItem"
@@ -133,7 +117,6 @@ export default {
           sortable: true,
           value: 'name',
         },
-        { text: this.$tc('role'), value: 'role' },
         { text: this.$tc('actions'), align: 'right', value: 'action', sortable: false },
       ],
       allMembers: [],
@@ -152,19 +135,20 @@ export default {
     initialize () {
       this.allMembers = [
         {
-          name: 'monica',
-          role: this.$tc('owner')
+          name: 'Meridith',
         },
         {
-          name: 'magali',
-          role: this.$tc('admin')
+          name: 'Sloan',
         },
         {
-          name: 'chico bento',
-          role: this.$tc('member')
+          name: 'Shepard',
         }
       ]
     },
+    removeUser (user) {
+      console.log(`delete user: ${user.name}`)
+    },
+
     // ADD
     closeInviteMemberModal () {
       this.showInviteMemberModal = false
