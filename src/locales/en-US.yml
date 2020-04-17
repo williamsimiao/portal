@@ -17,3 +17,14 @@ from: From
 to: To
 forgot_pwd: Forgot password
 send: Send
+close: Close
+certificate_request: Certificate request
+organization: Organization (O)
+organization_unit: Organization Unit (OU)
+common_name: Common Name (CN)
+locality: Locality (L)
+state_label: State (S)
+country: Country (C)
+distiguish_name: Distinguish Name (/CN=common name/O=organization name/OU=organization unit name/L=city name/S=state name/C=two letter ISO code/E=e-mail)
+email: Email (E)
+or: Or

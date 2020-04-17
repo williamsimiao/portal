@@ -5,6 +5,14 @@
         <v-col>
           <h2 class="heading">{{ $tc('home') }}</h2>
         </v-col>
+        <v-tooltip top>
+          <template v-slot:activator="{ on }">
+            <v-btn v-on="on" id="home_add_hsm" icon @click="showCrsModal = true">
+              <v-icon>add</v-icon>
+            </v-btn>
+          </template>
+          <span>{{ $tc('certificate_request') }} </span>
+        </v-tooltip>
       </v-row>
       <v-divider/>
       <v-row>
@@ -16,16 +24,24 @@
         </v-col>
       </v-row>
     </v-container>
+    <csr-modal
+      :open="showCrsModal"
+      @success="csrWithSuccess"
+      @close="showCrsModal = false"
+    />
   </div>
 </template>
 
 <script>
 import CertCardView from '@/components/CertificateViews/CertificateCardView'
+import CsrModal from './CsrModal'
 export default {
   components: {
     CertCardView,
+    CsrModal
   },
   data: () => ({
+    showCrsModal: false,
     certificates: [
       {
         subjectName: 'Meredith Grey - ortopedista',
@@ -48,6 +64,10 @@ export default {
     },
     certRemovedWithSuccess () {
       this.loadCertificates()
+    },
+    csrWithSuccess () {
+      this.showCrsModal = false
+      this.$notify.success({})
     }
   }
 }
