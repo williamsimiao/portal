@@ -60,21 +60,22 @@
     
 <script>
 import { required, sameAs } from 'vuelidate/lib/validators'
-
 export default {
-  data: () => ({
-    dialog: false,
-    username: null,
-    password: null,
-    repeatPassword: null,
-    showPwd: false,
-    showRepeatPwd: false
-  }),
   props: {
     open: {
       type: Boolean,
       required: true,
       default: false
+    }
+  },
+  data () {
+    return {
+      dialog: this.open,
+      username: null,
+      password: null,
+      repeatPassword: null,
+      showPwd: false,
+      showRepeatPwd: false
     }
   },
   computed: {

@@ -131,7 +131,7 @@ export default {
   },
   data () {
     return {
-      dialog: false,
+      dialog: this.open,
       isUsingDN: true,
       email: null,
       commomName: null,

@@ -15,11 +15,11 @@
       </v-card-title>
       <v-card-text>
         {{ $t('member_removal_warning') }}
-        <strong>{{ user.name }}</strong>
+        <strong>{{ }}</strong>
         <v-row>
           <v-col>
             <v-icon>person</v-icon>
-            {{ user.name }}
+            {{  }}
           </v-col>
         </v-row>
       </v-card-text>
@@ -36,9 +36,6 @@
 <script>
 
 export default {
-  data: () => ({
-    dialog: false
-  }),
   props: {
     open: {
       type: Boolean,
@@ -48,6 +45,11 @@ export default {
     user: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      dialog: this.open
     }
   },
   methods: {
@@ -60,9 +62,8 @@ export default {
   },
   watch: {
     open (val) {
-      console.log(this.user)
       this.dialog = val
     }
   }
-  
 }
+</script>
