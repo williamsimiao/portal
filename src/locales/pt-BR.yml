@@ -4,6 +4,12 @@ i18n:
 
 $validation:
   required: Dado obrigatório
+  min_length: Tamanho mínimo é {num}
+  max_length: Tamanho máximo é {num}
+  same_as: Informação não é igual
+  min_upper: Necessário ter no mínimo {num} letras maiúsculas
+  min_lower: Necessário ter no mínimo {num} letras minúsculas
+  min_special: Necessário ter no mínimo {num} caracteres especiais
 
 language: Idioma
 login: Entrar
@@ -31,3 +37,5 @@ or: OU
 home: Home
 users_managment: Gerência de usuários
 user: Usuário | Usuários
+remove_user: Remover usuário
+repeat_password: Repita a senha

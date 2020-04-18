@@ -4,7 +4,7 @@
       <h2 class="heading">{{ $tc('users_managment') }}</h2>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <v-btn v-on="on" icon @click="showInviteMemberModal = true">
+          <v-btn v-on="on" icon @click="showAddUserModal = true">
             <v-icon>
               add
             </v-icon>
@@ -27,7 +27,7 @@
     </v-row>
     <v-data-table
       :headers="headers"
-      :items="allMembers"
+      :items="users"
       sort-by="calories"
       class="elevation-1"
       hide-default-header
@@ -39,7 +39,7 @@
             <v-btn
               v-on="on"
               icon
-              @click="removeUser(item)"
+              @click="openRemoveUserModal(item)"
             >
               <v-icon>delete</v-icon>
             </v-btn>
@@ -65,40 +65,27 @@
         </td>
       </template>
     </v-data-table>
-    <!-- <member-invite-modal/> -->
-    <!-- <member-remove-modal
-      organizationName="Limoeiro"
-      :name="selectedItem"
-      :open="showRemoveMemberModal"
-      @close="closeRemoveMemberModal"
-      @success="memberRemovedWithSuccess"
+    <add-user-modal
+      :open="showAddUserModal"
+      @close="showAddUserModal = false"
+      @success="userAddedWithSuccess()"
     />
-    <member-role-modal
-      organizationName="Limoeiro"
-      :name="selectedItem"
-      :open="showRoleModal"
-      @close="closeRoleModal"
-      @success="roleEditedWithSuccess"
+    <remove-user-modal
+      :open="showRemoveUserModal"
+      :user="selectedItem"
+      @close="closeRemoveUserModal()"
+      @success="userRemovedWithSuccess()"
     />
-    <member-invite-modal
-      organizationName="Limoeiro"
-      :open="showInviteMemberModal"
-      @close="closeInviteMemberModal"
-      @success="roleEditedWithSuccess"
-    /> -->
   </v-container>
 </template>
 <script>
-// import MemberRemoveModal from './MembersDataTableModals/MemberRemoveModal'
-// import MemberRoleModal from './MembersDataTableModals/MemberRoleModal'
-// import MemberInviteModal from './MembersDataTableModals/MemberInviteModal'
-
+import RemoveUserModal from './RemoveUserModal'
+import AddUserModal from './AddUserModal'
 export default {
-  // components: {
-  //   MemberRemoveModal,
-  //   MemberRoleModal,
-  //   MemberInviteModal
-  // },
+  components: {
+    RemoveUserModal,
+    AddUserModal
+  },
   created () {
     this.initialize()
   },
@@ -106,9 +93,8 @@ export default {
     return {
       search: null,
       selectedItem: null,
-      showInviteMemberModal: false,
-      showRemoveMemberModal: false,
-      showRoleModal: false,
+      showAddUserModal: false,
+      showRemoveUserModal: false,
       item: 0,
       headers: [
         {
@@ -119,21 +105,12 @@ export default {
         },
         { text: this.$tc('actions'), align: 'right', value: 'action', sortable: false },
       ],
-      allMembers: [],
-      editedIndex: -1,
-      editedItem: {
-        name: '',
-        protein: 0,
-      },
-      defaultItem: {
-        name: '',
-        protein: 0,
-      },
+      users: [],
     }
   },
   methods: {
     initialize () {
-      this.allMembers = [
+      this.users = [
         {
           name: 'Meridith',
         },
@@ -145,42 +122,22 @@ export default {
         }
       ]
     },
-    removeUser (user) {
-      console.log(`delete user: ${user.name}`)
-    },
-
     // ADD
-    closeInviteMemberModal () {
-      this.showInviteMemberModal = false
-      this.selectedItem = null
-    },
-    memberInvitedWithSuccess () {
-      this.closeInviteMemberModal()
+    userAddedWithSuccess () {
+      this.showAddUserModal = false
     },
     // REMOVE
-    removeMember (memberName) {
-      this.selectedItem = memberName
-      this.showRemoveMemberModal = true
+    openRemoveUserModal (user) {
+      this.selectedItem = user
+      this.showRemoveUserModal = true
     },
-    closeRemoveMemberModal () {
-      this.showRemoveMemberModal = false
+    closeRemoveUserModal () {
+      this.showRemoveUserModal = false
       this.selectedItem = null
     },
-    memberRemovedWithSuccess () {
-      this.closeRemoveMemberModal()
+    userRemovedWithSuccess () {
+      this.closeRemoveUserModal()
     },
-    // EDIT ROLE
-    editMemberRole (memberName) {
-      this.selectedItem = memberName
-      this.showRoleModal = true
-    },
-    closeRoleModal () {
-      this.showRoleModal = false
-      this.selectedItem = null
-    },
-    roleEditedWithSuccess () {
-      this.closeRoleModal()
-    }
   }
 }
 </script>

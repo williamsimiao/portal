@@ -5,7 +5,9 @@
     app
     :flat="$vuetify.breakpoint.xsOnly"
   >
-    <v-app-bar-nav-icon @click.stop="toogleMainDrawer()"/>
+    <template v-if="isLogged">
+      <v-app-bar-nav-icon @click.stop="toogleMainDrawer()"/>
+    </template>
     <router-link :to="{name: 'login'}" class="d-flex router-link-active">
       <img src="@/assets/logo.png" height="38px" width="38px">
     </router-link>

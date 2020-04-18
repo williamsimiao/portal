@@ -4,6 +4,12 @@ i18n:
 
 $validation:
   required: Required data
+  min_length: Min length is {num}
+  max_length: Max length is {num}
+  same_as: Info is not the same
+  min_upper: Required {num} uppercase letters
+  min_lower: Required {num} lowercase letters
+  min_special: Required {num} special letters
 
 language: Language
 login: Sign in
@@ -31,3 +37,5 @@ or: OR
 home: Home
 users_managment: Users managment
 user: User | Users
+remove_user: Remove user
+repeat_password: Repeat password
