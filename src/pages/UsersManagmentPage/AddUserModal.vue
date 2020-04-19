@@ -18,7 +18,6 @@
           <v-text-field
             v-model="username"
             :label="$tc('username')"
-            prepend-icon="person"
             :error-messages="usernameErrors"
             @input="$v.username.$touch()"
             @blur="$v.username.$touch()"
@@ -27,7 +26,6 @@
           <v-text-field
             v-model="password"
             :label="$tc('password')"
-            prepend-icon="lock"
             :append-icon="showPwd ? 'visibility' : 'visibility_off'"
             :type="showPwd ? 'text' : 'password'"
             @click:append="showPwd = !showPwd"
@@ -39,7 +37,6 @@
           <v-text-field
             v-model="repeatPassword"
             :label="$tc('repeat_password')"
-            prepend-icon="lock"
             :append-icon="showRepeatPwd ? 'visibility' : 'visibility_off'"
             :type="showPwd ? 'text' : 'password'"
             @click:append="showRepeatPwd = !showRepeatPwd"
@@ -47,10 +44,15 @@
             @input="$v.repeatPassword.$touch()"
             @blur="$v.repeatPassword.$touch()"
           />
-          <v-row class="my-1 mx-1">
-            <a @click="$router.push({ name: 'forgot_password' })" class="blue--text">{{ `${$tc('forgot_pwd')} ?` }}</a>
-            <v-spacer/>
-            <v-btn type="submit" color="primary">{{ $tc('create') }}</v-btn>
+
+          <v-row no-gutters justify="end">
+            <v-btn
+              dark
+              type="submit"
+              color="green darken-1"
+            >
+              {{ $tc('create') }}
+            </v-btn>
           </v-row>
         </v-form>
       </v-card-text>

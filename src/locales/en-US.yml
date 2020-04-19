@@ -39,3 +39,7 @@ users_managment: Users managment
 user: User | Users
 remove_user: Remove user
 repeat_password: Repeat password
+add_user: Add user
+remove: Remove
+actions: Actions
+name: Name

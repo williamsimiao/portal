@@ -100,17 +100,14 @@
             :label="$tc('distiguish_name')"
           />
           
-          <v-row>
-            <v-col>
-              <v-spacer/>
-              <v-btn
-                dark
-                type="submit"
-                color="green darken-1"
-              >
-                {{ $tc('send') }}
-              </v-btn>
-            </v-col>
+          <v-row no-gutters justify="end">
+            <v-btn
+              dark
+              type="submit"
+              color="green darken-1"
+            >
+              {{ $tc('send') }}
+            </v-btn>
           </v-row>
           
         </v-form>

@@ -39,3 +39,7 @@ users_managment: Gerência de usuários
 user: Usuário | Usuários
 remove_user: Remover usuário
 repeat_password: Repita a senha
+add_user: Adicionar usuário
+remove: Remover
+actions: Ações
+name: Nome

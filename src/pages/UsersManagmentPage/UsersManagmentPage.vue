@@ -10,7 +10,7 @@
             </v-icon>
           </v-btn>
         </template>
-        <span>{{ $tc('add_member') }} </span>
+        <span>{{ $tc('add_user') }} </span>
       </v-tooltip>
     </v-row>
     <v-divider/>
@@ -129,6 +129,7 @@ export default {
     // REMOVE
     openRemoveUserModal (user) {
       this.selectedItem = user
+      console.log(`selectedItem: ${this.selectedItem.name}`)
       this.showRemoveUserModal = true
     },
     closeRemoveUserModal () {

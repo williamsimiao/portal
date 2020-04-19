@@ -55,15 +55,16 @@ export default {
   },
   methods: {
     deleteCert () {
-      const body = {
-      }
-      this.$store.dispatch('', body)
-        .then(() => {
-          this.$emit('deleted')
-        })
-        .catch(err => {
-          console.log(err)
-        })
+      console.log('cert deleted')
+      // const body = {
+      // }
+      // this.$store.dispatch('', body)
+      //   .then(() => {
+      //     this.$emit('deleted')
+      //   })
+      //   .catch(err => {
+      //     console.log(err)
+      //   })
     }
   }
 }

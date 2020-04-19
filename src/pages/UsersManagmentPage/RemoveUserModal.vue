@@ -1,8 +1,8 @@
 <template>
-  <v-dialog v-model="dialog">
+  <v-dialog v-model="dialog" max-width="350px">
     <v-card>
       <v-card-title>
-        {{ $tc('add_user') }}
+        {{ $tc('remove_user') }}
         <v-spacer></v-spacer>
         <v-tooltip top>
           <template v-slot:activator="{ on }">
@@ -14,18 +14,12 @@
         </v-tooltip>
       </v-card-title>
       <v-card-text>
-        {{ $t('member_removal_warning') }}
-        <strong>{{ }}</strong>
-        <v-row>
-          <v-col>
-            <v-icon>person</v-icon>
-            {{  }}
-          </v-col>
-        </v-row>
+        {{ $t('remove') }}
+        <strong>{{ `${user.name} ?` }}</strong>
       </v-card-text>
       <v-card-actions>
         <v-spacer />
-        <v-btn text color="red darken-1" @click.native="removeUser">
+        <v-btn text color="red darken-1" @click="removeUser">
           {{ $t('remove') }}
         </v-btn>
       </v-card-actions>
@@ -39,12 +33,13 @@ export default {
   props: {
     open: {
       type: Boolean,
-      required: false,
+      required: true,
       default: false
     },
     user: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({ name: undefined })
     }
   },
   data () {
