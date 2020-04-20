@@ -33,18 +33,22 @@
           />
           
 
-          
-          <v-text-field
-            :label="$tc('organization_unit')"
-            v-model="organizationUnit"
-            :error-messages="organizationUnitErrors"
-            @input="$v.organizationUnit.$touch()"
-            @blur="$v.organizationUnit.$touch()"
-          />
+          <template v-for="(orgUnit, index) in organizationUnitArray">
+            <v-text-field
+              :key="`orgUnit-${index}`"
+              :label="organizationUnitLabel(index)"
+              v-model="organizationUnitArray[index]"
+              :error-messages="organizationUnitErrors"
+              @input="$v.organizationUnit.$touch()"
+              @blur="$v.organizationUnit.$touch()"
+              :append-outer-icon="index === 0 ? 'add' : 'remove'"
+              @click:append-outer="addRemoveItem(index)"
+            />
+          </template>
           
 
           
-          <v-text-field
+          <!-- <v-text-field
             :label="$tc('locality')"
             v-model="locality"
             :error-messages="localityErrors"
@@ -70,7 +74,7 @@
             :error-messages="countryErrors"
             @input="$v.country.$touch()"
             @blur="$v.country.$touch()"
-          />
+          /> -->
           
 
           
@@ -81,14 +85,11 @@
           
 
           
-          <v-spacer />
+          <!-- <v-spacer />
           <center>
             <strong>{{ $t('or') }}</strong>
           </center>
           <v-spacer />
-          
-
-          
           <v-textarea
             auto-grow
             row="1"
@@ -98,7 +99,7 @@
             @input="onDNSelected()"
             @blur="$v.distiguishName.$touch()"
             :label="$tc('distiguish_name')"
-          />
+          /> -->
           
           <v-row no-gutters justify="end">
             <v-btn
@@ -129,10 +130,10 @@ export default {
   data () {
     return {
       dialog: this.open,
-      isUsingDN: true,
+      isUsingDN: false,
       email: null,
       commomName: null,
-      organizationUnit: null,
+      organizationUnitArray: [''],
       organization: null,
       stateValue: null,
       locality: null,
@@ -209,25 +210,41 @@ export default {
     }
   },
   methods: {
+    organizationUnitLabel (index) {
+      var label = `${this.$tc('organization_unit')}`
+      if (index > 0) label += `-${index +1}`
+      return label
+    },
+    addRemoveItem (index) {
+      if (index === 0) {
+        this.organizationUnitArray.push('')
+      } else {
+        this.organizationUnitArray.splice(index, 1)
+      }
+    },
     closeModal () {
       this.$emit('close')
     },
-    resetFields () {
-      this.isUsingDN = true
+    clearForm () {
+      this.isUsingDN = false
       this.distiguishName = null
       this.commomName = null
       this.organization = null
-      this.organizationUnit = null
+      this.organizationUnitArray = ['']
       this.locality = null
       this.stateValue = null
       this.country = null
       this.email = null
+      this.$v.$reset()
     },
     mountDNfromFields () {
+      console.log(this.organizationUnitArray)
       var dn = ''
       if (this.email) dn += '/E=' + this.email
       if (this.commomName) dn += '/CN=' + this.commomName
-      if (this.organizationUnit) dn += '/OU=' + this.organizationUnit
+      for (let organizationUnit of this.organizationUnitArray) {
+        dn += '/OU=' + organizationUnit
+      }
       if (this.organization) dn += '/O=' + this.organization
       if (this.stateValue) dn += '/ST=' + this.stateValue
       if (this.locality) dn += '/L=' + this.locality
@@ -246,7 +263,7 @@ export default {
       this.isUsingDN = true
       this.commomName = null
       this.organization = null
-      this.organizationUnit = null
+      this.organizationUnitArray = ['']
       this.locality = null
       this.stateValue = null
       this.country = null
@@ -254,18 +271,19 @@ export default {
     },
     submit () {
       const myDN = this.distiguishName !== null ? this.distiguishName : this.mountDNfromFields()
-      const body = {
-        // obj: this.thename,
-        // hash: this.shaValue,
-        dn: myDN
-      }
-      this.$store.dispatch('cert/doCertRequest', body)
-        .then(() => {
-          this.$emit('success')
-        })
-        .catch(err => {
-          this.$notify.error(err)
-        })
+      console.log(`myDN: ${myDN}`)
+      // const body = {
+      //   // obj: this.thename,
+      //   // hash: this.shaValue,
+      //   dn: myDN
+      // }
+      // this.$store.dispatch('cert/doCertRequest', body)
+      //   .then(() => {
+      //     this.$emit('success')
+      //   })
+      //   .catch(err => {
+      //     this.$notify.error(err)
+      //   })
     }
   },
   validations () {
@@ -308,7 +326,7 @@ export default {
     open (val) {
       this.dialog = val
       if (!val) {
-        this.resetFields()
+        this.clearForm()
       }
     }
   }
