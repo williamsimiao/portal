@@ -52,9 +52,8 @@ export default {
       this.$store.dispatch('drawer/toggle')
     },
     logout () {
-      this.$store.dispatch('auth/doLogout').then(() => {
-        this.$router.push({ name: 'login'})
-      })
+      // TODO: remover
+      this.$router.push({ name: 'login'})
     }
   },
   computed: {

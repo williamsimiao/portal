@@ -21,7 +21,6 @@
                 @input="$v.username.$touch()"
                 @blur="$v.username.$touch()"
               />
-
               <v-text-field
                 v-model="password"
                 :label="$tc('password')"
@@ -101,6 +100,8 @@ export default {
   },
   methods: {
     submit () {
+      // TODO: remove
+      this.$notify.success({title: "hi", message: "hi again"})
       this.$store.commit('auth/SET_IS_LOGGED', true)
       this.$router.push({ name: 'home' })
     }

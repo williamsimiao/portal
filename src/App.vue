@@ -10,6 +10,7 @@
       </transition>
     </v-content>
     <app-footer />
+    <vue-snotify />
   </v-app>
 </template>
 

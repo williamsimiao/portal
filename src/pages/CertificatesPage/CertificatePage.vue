@@ -42,18 +42,7 @@ export default {
   },
   data: () => ({
     showCrsModal: false,
-    certificates: [
-      {
-        subjectName: 'Meredith Grey - ortopedista',
-        notBefore: new Date(),
-        notAfter: new Date()
-      },
-      {
-        subjectName: 'Meredith Grey - cirurgiã',
-        notBefore: new Date(),
-        notAfter: new Date()
-      }
-    ]
+    certificates: []
   }),
   created () {
     this.loadCertificates()
@@ -61,6 +50,18 @@ export default {
   methods: {
     loadCertificates () {
       console.log('TODO')
+      this.certificates = [
+        {
+          subjectName: 'Meredith Grey - ortopedista',
+          notBefore: new Date(),
+          notAfter: new Date()
+        },
+        {
+          subjectName: 'Meredith Grey - cirurgiã',
+          notBefore: new Date(),
+          notAfter: new Date()
+        }
+      ]
     },
     certRemovedWithSuccess () {
       this.loadCertificates()
