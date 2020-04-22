@@ -15,7 +15,7 @@
       </v-card-title>
       <v-card-text>
         {{ $t('remove') }}
-        <strong>{{ `${user.name} ?` }}</strong>
+        <strong>{{ `${name} ?` }}</strong>
       </v-card-text>
       <v-card-actions>
         <v-spacer />
@@ -33,13 +33,13 @@ export default {
   props: {
     open: {
       type: Boolean,
-      required: true,
+      required: false,
       default: false
     },
     user: {
       type: Object,
-      required: true,
-      default: () => ({ name: undefined })
+      required: false,
+      default: () => {}
     }
   },
   data () {
@@ -47,12 +47,19 @@ export default {
       dialog: this.open
     }
   },
+  computed: {
+    name () {
+      if (this.user) return this.user.name
+      return ''
+    }
+  },
   methods: {
     closeModal () {
       this.$emit('close')
     },
     removeUser () {
-      console.log(`removed ${this.user.name}`)
+      if (!this.user)
+      console.log(`removed ${this.name}`)
     }
   },
   watch: {

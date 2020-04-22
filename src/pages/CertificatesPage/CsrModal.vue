@@ -22,8 +22,6 @@
             @input="onCNSelected"
             @blur="$v.commomName.$touch()"
           />
-
-          
           <v-text-field
             :label="$tc('organization')"
             v-model="organization"
@@ -31,8 +29,6 @@
             @input="$v.organization.$touch()"
             @blur="$v.organization.$touch()"
           />
-          
-
           <template v-for="(orgUnit, index) in organizationUnitArray">
             <v-text-field
               :key="`orgUnit-${index}`"
@@ -45,19 +41,13 @@
               @click:append-outer="addRemoveItem(index)"
             />
           </template>
-          
-
-          
-          <!-- <v-text-field
+          <v-text-field
             :label="$tc('locality')"
             v-model="locality"
             :error-messages="localityErrors"
             @input="$v.locality.$touch()"
             @blur="$v.locality.$touch()"
           />
-          
-
-          
           <v-text-field
             :label="$tc('state_label')"
             v-model="stateValue"
@@ -65,42 +55,17 @@
             @input="$v.stateValue.$touch()"
             @blur="$v.stateValue.$touch()"
           />
-          
-
-          
-          <v-text-field
+          <!-- <v-text-field
             :label="$tc('country')"
             v-model="country"
             :error-messages="countryErrors"
             @input="$v.country.$touch()"
             @blur="$v.country.$touch()"
           /> -->
-          
-
-          
           <v-text-field
             label="Email (E)"
             v-model="email"
           />
-          
-
-          
-          <!-- <v-spacer />
-          <center>
-            <strong>{{ $t('or') }}</strong>
-          </center>
-          <v-spacer />
-          <v-textarea
-            auto-grow
-            row="1"
-            row-height="15"
-            v-model="distiguishName"
-            :error-messages="distiguishNameErrors"
-            @input="onDNSelected()"
-            @blur="$v.distiguishName.$touch()"
-            :label="$tc('distiguish_name')"
-          /> -->
-          
           <v-row no-gutters justify="end">
             <v-btn
               dark
